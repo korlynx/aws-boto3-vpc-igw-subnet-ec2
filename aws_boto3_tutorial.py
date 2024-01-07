@@ -26,7 +26,6 @@ vpc = ec2.create_vpc(CidrBlock='172.20.0.0/16',
 )
 
 # Assign name 'my-vpc' to the vpc 
-vpc.create_tags(Tags=[{'Key':'Name', 'Value':'my-vpc'}])
 vpc.wait_until_available()
 vpc_id = vpc.id
 
@@ -200,5 +199,6 @@ instances = ec2.create_instances(
 )
 
 # The output is a list of created instance(s)
-instances[0].wait_until_running()
+#instances[0].wait_until_running()
+instances[0].wait_until_available()
 print(instances[0])
